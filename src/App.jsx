@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect,useRef } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import "./index.css";
 
 function App() {
@@ -9,9 +9,7 @@ function App() {
 
   // useRef hook
 
-  const passwordRef = useRef()
-
-  
+  const passwordRef = useRef();
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -30,11 +28,11 @@ function App() {
     setPassword(pass);
   }, [length, numAllowed, charAllowed, setPassword]);
 
-  const copyPassworToClipBoard = useCallback(()=>{
-    passwordRef.current?.select()
-    passwordRef.current?.setSelectionRange(0,100)
-    window.navigator.clipboard.writeText(password)
-  },[password])
+  const copyPassworToClipBoard = useCallback(() => {
+    passwordRef.current?.select();
+    passwordRef.current?.setSelectionRange(0, 100);
+    window.navigator.clipboard.writeText(password);
+  }, [password]);
 
   useEffect(() => {
     passwordGenerator();
@@ -55,12 +53,15 @@ function App() {
             ref={passwordRef}
           />
 
-          <button onClick={copyPassworToClipBoard} className="bg-blue-700 h-10 w-[15%] rounded-r-2xl">
+          <button
+            onClick={copyPassworToClipBoard}
+            className="bg-blue-700 h-10 w-[15%] rounded-r-2xl"
+          >
             Copy
           </button>
         </div>
 
-        <div className="flex items-center gap-3 pl-3 mt-3">
+        <div className="flex flex-wrap items-center gap-3 pl-3 mt-3">
           <div className="flex justify-center items-center gap-1">
             <input
               type="range"
